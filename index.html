@@ -1,0 +1,1505 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nardi Nails | Agenda</title>
+
+<style>
+:root {
+  --wine: #783c50;
+  --wine-dark: #542838;
+  --pink: #ead3d8;
+  --cream: #fffaf7;
+  --white: #ffffff;
+  --text: #45343a;
+  --muted: #8b777e;
+  --green: #397a5b;
+  --red: #b64b59;
+  --border: #eadfe1;
+  --shadow: 0 8px 25px #54283812;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+header {
+  background: linear-gradient(135deg, var(--wine-dark), var(--wine));
+  color: white;
+  padding: 25px 6%;
+}
+
+.header-content {
+  max-width: 1250px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.logo h1 {
+  font-family: Georgia, serif;
+  font-size: 32px;
+  letter-spacing: 1px;
+}
+
+.logo p {
+  font-size: 13px;
+  margin-top: 7px;
+  color: #f5dfe5;
+}
+
+.header-date {
+  font-size: 14px;
+  line-height: 1.8;
+  text-align: right;
+}
+
+.container {
+  max-width: 1250px;
+  margin: 25px auto;
+  padding: 0 20px 40px;
+}
+
+.navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+button, .button {
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 11px 15px;
+  font-size: 13px;
+  font-weight: bold;
+  transition: .2s;
+}
+
+button:hover, .button:hover {
+  transform: translateY(-1px);
+  filter: brightness(.97);
+}
+
+.nav-btn {
+  background: white;
+  color: var(--wine);
+  border: 1px solid var(--border);
+}
+
+.nav-btn.active, .primary {
+  background: var(--wine);
+  color: white;
+}
+
+.secondary {
+  background: var(--pink);
+  color: var(--wine-dark);
+}
+
+.danger {
+  background: #fbe6e8;
+  color: var(--red);
+}
+
+.success {
+  background: #e1f2e8;
+  color: var(--green);
+}
+
+.whatsapp {
+  background: #dff4e6;
+  color: #176c3a;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 8px;
+  padding: 9px 11px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.stat-card, .panel {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+.stat-card span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.stat-card h2 {
+  font-size: 25px;
+  margin-top: 10px;
+  color: var(--wine);
+  overflow-wrap: anywhere;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.section-title h2 {
+  font-family: Georgia, serif;
+  color: var(--wine-dark);
+  font-size: 23px;
+}
+
+.panel {
+  margin-bottom: 22px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.field.full {
+  grid-column: 1 / -1;
+}
+
+label {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: #fffdfc;
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--wine);
+  box-shadow: 0 0 0 3px #783c5012;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 17px;
+}
+
+.filters input, .filters select {
+  flex: 1;
+  min-width: 160px;
+}
+
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 650px;
+}
+
+th, td {
+  text-align: left;
+  padding: 13px 10px;
+  border-bottom: 1px solid #f0e7e9;
+  font-size: 13px;
+  vertical-align: middle;
+}
+
+th {
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+}
+
+td strong {
+  color: var(--wine-dark);
+}
+
+.small-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.small-actions button {
+  padding: 8px 9px;
+  font-size: 11px;
+}
+
+.status {
+  display: inline-block;
+  border-radius: 30px;
+  padding: 6px 9px;
+  font-size: 11px;
+  font-weight: bold;
+  background: #f4edf0;
+  color: var(--wine);
+}
+
+.status.Pendente {
+  background: #fff0d5;
+  color: #93611a;
+}
+
+.status.Concluído {
+  background: #e1f2e8;
+  color: var(--green);
+}
+
+.status.Cancelado {
+  background: #fbe6e8;
+  color: var(--red);
+}
+
+.empty {
+  padding: 35px 10px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 14px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.notice {
+  background: #f9edf0;
+  color: var(--wine-dark);
+  padding: 13px;
+  border-radius: 10px;
+  font-size: 13px;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.client-card {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.client-card:last-child {
+  border-bottom: none;
+}
+
+.client-card h3 {
+  color: var(--wine);
+  margin-bottom: 7px;
+  font-size: 16px;
+}
+
+.client-card p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 20px;
+  font-size: 12px;
+}
+
+@media (max-width: 800px) {
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .header-date {
+    text-align: left;
+  }
+}
+
+@media (max-width: 520px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .field.full {
+    grid-column: auto;
+  }
+
+  .logo h1 {
+    font-size: 27px;
+  }
+
+  .stat-card, .panel {
+    padding: 15px;
+  }
+
+  .stat-card h2 {
+    font-size: 21px;
+  }
+
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-content">
+    <div class="logo">
+      <h1>Nardi Nails</h1>
+      <p>Beleza, cuidado e delicadeza em cada detalhe.</p>
+    </div>
+
+    <div class="header-date">
+      <div id="todayText"></div>
+      <div>Agenda profissional</div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <nav class="navigation">
+    <button class="nav-btn active" data-page="inicio">Início</button>
+    <button class="nav-btn" data-page="agenda">Agendamentos</button>
+    <button class="nav-btn" data-page="clientes">Clientes</button>
+    <button class="nav-btn" data-page="financeiro">Financeiro</button>
+    <button class="nav-btn" data-page="servicos">Serviços</button>
+    <button class="nav-btn" data-page="backup">Backup</button>
+  </nav>
+
+  <!-- INÍCIO -->
+  <section id="page-inicio" class="page">
+    <div class="section-title">
+      <h2>Visão geral</h2>
+      <button class="primary" onclick="showPage('agenda'); resetAppointmentForm();">
+        + Novo agendamento
+      </button>
+    </div>
+
+    <div class="stats">
+      <div class="stat-card">
+        <span>Agendamentos de hoje</span>
+        <h2 id="statToday">0</h2>
+      </div>
+      <div class="stat-card">
+        <span>Faturamento recebido</span>
+        <h2 id="statReceived">R$ 0,00</h2>
+      </div>
+      <div class="stat-card">
+        <span>Valores pendentes</span>
+        <h2 id="statPending">R$ 0,00</h2>
+      </div>
+      <div class="stat-card">
+        <span>Clientes cadastradas</span>
+        <h2 id="statClients">0</h2>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="section-title">
+        <h2>Próximos atendimentos</h2>
+        <button class="secondary" onclick="showPage('agenda')">Ver agenda</button>
+      </div>
+      <div id="todayAppointments"></div>
+    </div>
+
+    <div class="notice">
+      💗 Dica: mantenha os agendamentos atualizados e marque os pagamentos
+      corretamente para acompanhar seu negócio.
+    </div>
+  </section>
+
+  <!-- AGENDA -->
+  <section id="page-agenda" class="page hidden">
+    <div class="panel">
+      <div class="section-title">
+        <h2 id="appointmentFormTitle">Novo agendamento</h2>
+      </div>
+
+      <form id="appointmentForm">
+        <input type="hidden" id="appointmentId">
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="appointmentClient">Nome da cliente *</label>
+            <input id="appointmentClient" list="clientSuggestions"
+                   required placeholder="Nome completo">
+            <datalist id="clientSuggestions"></datalist>
+          </div>
+
+          <div class="field">
+            <label for="appointmentPhone">WhatsApp</label>
+            <input id="appointmentPhone" type="tel"
+                   placeholder="DDD + número">
+          </div>
+
+          <div class="field">
+            <label for="appointmentService">Serviço *</label>
+            <select id="appointmentService" required></select>
+          </div>
+
+          <div class="field">
+            <label for="appointmentPrice">Valor (R$) *</label>
+            <input id="appointmentPrice" type="number" min="0"
+                   step="0.01" required>
+          </div>
+
+          <div class="field">
+            <label for="appointmentDate">Data *</label>
+            <input id="appointmentDate" type="date" required>
+          </div>
+
+          <div class="field">
+            <label for="appointmentTime">Horário *</label>
+            <input id="appointmentTime" type="time" required>
+          </div>
+
+          <div class="field">
+            <label for="appointmentStatus">Situação</label>
+            <select id="appointmentStatus">
+              <option value="Pendente">Agendado</option>
+              <option value="Concluído">Concluído</option>
+              <option value="Cancelado">Cancelado</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="appointmentPayment">Pagamento</label>
+            <select id="appointmentPayment">
+              <option value="Pendente">Pendente</option>
+              <option value="Pago">Pago</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label for="appointmentNotes">Observações</label>
+            <textarea id="appointmentNotes"
+              placeholder="Preferências, cor escolhida, detalhes..."></textarea>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="primary" type="submit">Salvar agendamento</button>
+          <button class="secondary" type="button"
+                  onclick="resetAppointmentForm()">Limpar</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="panel">
+      <div class="section-title">
+        <h2>Minha agenda</h2>
+      </div>
+
+      <div class="filters">
+        <input id="filterDate" type="date" aria-label="Filtrar por data">
+        <input id="filterSearch" placeholder="Buscar cliente ou serviço">
+        <select id="filterStatus">
+          <option value="">Todas as situações</option>
+          <option value="Pendente">Agendado</option>
+          <option value="Concluído">Concluído</option>
+          <option value="Cancelado">Cancelado</option>
+        </select>
+        <button class="secondary" onclick="clearFilters()">Limpar filtros</button>
+      </div>
+
+      <div id="appointmentsList"></div>
+    </div>
+  </section>
+
+  <!-- CLIENTES -->
+  <section id="page-clientes" class="page hidden">
+    <div class="panel">
+      <div class="section-title">
+        <h2>Cadastro de clientes</h2>
+      </div>
+
+      <form id="clientForm">
+        <input type="hidden" id="clientId">
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="clientName">Nome *</label>
+            <input id="clientName" required placeholder="Nome da cliente">
+          </div>
+
+          <div class="field">
+            <label for="clientPhone">WhatsApp *</label>
+            <input id="clientPhone" type="tel" required
+                   placeholder="DDD + número">
+          </div>
+
+          <div class="field full">
+            <label for="clientNotes">Observações da cliente</label>
+            <textarea id="clientNotes"
+              placeholder="Preferências, alergias informadas pela cliente, cores favoritas..."></textarea>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="primary" type="submit">Salvar cliente</button>
+          <button class="secondary" type="button" onclick="resetClientForm()">
+            Limpar
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="panel">
+      <div class="section-title">
+        <h2>Minhas clientes</h2>
+      </div>
+      <input id="clientSearch" placeholder="Buscar por nome ou telefone"
+             style="margin-bottom:15px">
+      <div id="clientsList"></div>
+    </div>
+  </section>
+
+  <!-- FINANCEIRO -->
+  <section id="page-financeiro" class="page hidden">
+    <div class="section-title">
+      <h2>Controle financeiro</h2>
+    </div>
+
+    <div class="stats">
+      <div class="stat-card">
+        <span>Total recebido</span>
+        <h2 id="financeReceived">R$ 0,00</h2>
+      </div>
+      <div class="stat-card">
+        <span>Total pendente</span>
+        <h2 id="financePending">R$ 0,00</h2>
+      </div>
+      <div class="stat-card">
+        <span>Atendimentos concluídos</span>
+        <h2 id="financeCompleted">0</h2>
+      </div>
+      <div class="stat-card">
+        <span>Faturamento previsto</span>
+        <h2 id="financeExpected">R$ 0,00</h2>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="section-title">
+        <h2>Resumo por mês</h2>
+      </div>
+      <div class="field" style="max-width:280px;margin-bottom:18px">
+        <label for="financeMonth">Escolha o mês</label>
+        <input type="month" id="financeMonth">
+      </div>
+      <div id="financeSummary"></div>
+    </div>
+
+    <div class="notice">
+      Os valores são calculados com base nos agendamentos cadastrados.
+      O faturamento recebido considera apenas os atendimentos marcados como pagos.
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section id="page-servicos" class="page hidden">
+    <div class="panel">
+      <div class="section-title">
+        <h2>Cadastrar serviço</h2>
+      </div>
+
+      <form id="serviceForm">
+        <input type="hidden" id="serviceId">
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="serviceName">Nome do serviço *</label>
+            <input id="serviceName" required placeholder="Ex.: Banho em gel">
+          </div>
+          <div class="field">
+            <label for="servicePrice">Preço (R$) *</label>
+            <input id="servicePrice" type="number" min="0"
+                   step="0.01" required>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="primary" type="submit">Salvar serviço</button>
+          <button class="secondary" type="button" onclick="resetServiceForm()">
+            Limpar
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="panel">
+      <div class="section-title">
+        <h2>Meus serviços e preços</h2>
+      </div>
+      <div id="servicesList"></div>
+    </div>
+  </section>
+
+  <!-- BACKUP -->
+  <section id="page-backup" class="page hidden">
+    <div class="panel">
+      <div class="section-title">
+        <h2>Backup dos dados</h2>
+      </div>
+
+      <p style="font-size:14px;line-height:1.8;margin-bottom:18px">
+        Exporte uma cópia da sua agenda, clientes e serviços para guardar
+        seus dados. Você poderá importar esse arquivo futuramente.
+      </p>
+
+      <div class="form-actions">
+        <button class="primary" onclick="exportBackup()">
+          Exportar backup
+        </button>
+
+        <label class="button secondary" for="backupFile">
+          Importar backup
+        </label>
+        <input id="backupFile" type="file" accept=".json,application/json"
+               class="hidden">
+      </div>
+
+      <div class="notice" style="margin-top:20px">
+        Importante: os dados ficam salvos neste navegador. Limpar os dados
+        do navegador ou trocar de aparelho pode apagá-los. Faça backups
+        regularmente e guarde o arquivo em local seguro.
+      </div>
+
+      <button class="danger" onclick="clearAllData()">
+        Apagar todos os dados
+      </button>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Nardi Nails · Cuidado, beleza e delicadeza em cada detalhe. 💗
+</footer>
+
+<script>
+"use strict";
+
+const STORAGE_KEY = "nardiNailsAgenda_v2";
+
+const defaultServices = [
+  { id: "s1", name: "Alongamento em fibra", price: 90 },
+  { id: "s2", name: "Esmaltação em gel", price: 65 },
+  { id: "s3", name: "Banho em gel", price: 70 },
+  { id: "s4", name: "Manutenção", price: 60 }
+];
+
+function loadData() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const data = JSON.parse(saved);
+      return {
+        appointments: Array.isArray(data.appointments) ? data.appointments : [],
+        clients: Array.isArray(data.clients) ? data.clients : [],
+        services: Array.isArray(data.services) ? data.services : [...defaultServices]
+      };
+    }
+  } catch (error) {
+    console.error("Não foi possível carregar os dados:", error);
+  }
+
+  return {
+    appointments: [],
+    clients: [],
+    services: [...defaultServices]
+  };
+}
+
+let db = loadData();
+
+function saveData() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
+    renderAll();
+  } catch (error) {
+    alert("Não foi possível salvar os dados. Faça um backup e verifique o espaço disponível.");
+  }
+}
+
+function uid() {
+  return Date.now().toString(36) +
+    Math.random().toString(36).slice(2, 8);
+}
+
+function money(value) {
+  return Number(value || 0).toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+  });
+}
+
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[char]);
+}
+
+function todayISO() {
+  const date = new Date();
+  date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
+  return date.toISOString().slice(0, 10);
+}
+
+function formatDate(date) {
+  if (!date) return "—";
+  const parts = date.split("-");
+  return `${parts[2]}/${parts[1]}/${parts[0]}`;
+}
+
+function phoneDigits(phone) {
+  let digits = String(phone || "").replace(/\D/g, "");
+  if (digits.length >= 10 && !digits.startsWith("55")) {
+    digits = "55" + digits;
+  }
+  return digits;
+}
+
+function whatsappLink(phone, message = "") {
+  const digits = phoneDigits(phone);
+  if (!digits) return "";
+  return `https://wa.me/${digits}?text=${encodeURIComponent(message)}`;
+}
+
+function openWhatsApp(phone, message = "") {
+  const link = whatsappLink(phone, message);
+  if (!link) {
+    alert("Cadastre o telefone da cliente com DDD primeiro.");
+    return;
+  }
+  window.open(link, "_blank", "noopener,noreferrer");
+}
+
+function showPage(page) {
+  document.querySelectorAll(".page").forEach(section => {
+    section.classList.toggle("hidden", section.id !== `page-${page}`);
+  });
+
+  document.querySelectorAll(".nav-btn").forEach(button => {
+    button.classList.toggle("active", button.dataset.page === page);
+  });
+
+  renderAll();
+}
+
+document.querySelectorAll(".nav-btn").forEach(button => {
+  button.addEventListener("click", () => showPage(button.dataset.page));
+});
+
+document.getElementById("todayText").textContent =
+  new Date().toLocaleDateString("pt-BR", {
+    weekday: "long",
+    day: "2-digit",
+    month: "long",
+    year: "numeric"
+  });
+
+document.getElementById("appointmentDate").value = todayISO();
+document.getElementById("filterDate").value = todayISO();
+document.getElementById("financeMonth").value = todayISO().slice(0, 7);
+
+// SERVIÇOS
+
+function renderServiceOptions() {
+  const select = document.getElementById("appointmentService");
+  const previous = select.value;
+
+  select.innerHTML = '<option value="">Selecione um serviço</option>' +
+    db.services.map(service =>
+      `<option value="${escapeHTML(service.id)}">${escapeHTML(service.name)}</option>`
+    ).join("");
+
+  if (db.services.some(service => service.id === previous)) {
+    select.value = previous;
+  }
+}
+
+document.getElementById("appointmentService").addEventListener("change", event => {
+  const service = db.services.find(item => item.id === event.target.value);
+  if (service) {
+    document.getElementById("appointmentPrice").value = service.price;
+  }
+});
+
+document.getElementById("serviceForm").addEventListener("submit", event => {
+  event.preventDefault();
+
+  const id = document.getElementById("serviceId").value;
+  const name = document.getElementById("serviceName").value.trim();
+  const price = Number(document.getElementById("servicePrice").value);
+
+  if (!name || !Number.isFinite(price) || price < 0) {
+    alert("Confira o nome e o preço do serviço.");
+    return;
+  }
+
+  if (id) {
+    const service = db.services.find(item => item.id === id);
+    if (service) Object.assign(service, { name, price });
+  } else {
+    db.services.push({ id: uid(), name, price });
+  }
+
+  resetServiceForm();
+  saveData();
+});
+
+function resetServiceForm() {
+  document.getElementById("serviceForm").reset();
+  document.getElementById("serviceId").value = "";
+}
+
+function editService(id) {
+  const service = db.services.find(item => item.id === id);
+  if (!service) return;
+
+  document.getElementById("serviceId").value = service.id;
+  document.getElementById("serviceName").value = service.name;
+  document.getElementById("servicePrice").value = service.price;
+  document.getElementById("serviceName").focus();
+}
+
+function deleteService(id) {
+  const inUse = db.appointments.some(item => item.serviceId === id);
+  if (inUse) {
+    alert("Este serviço está vinculado a agendamentos e não pode ser excluído.");
+    return;
+  }
+
+  if (!confirm("Deseja excluir este serviço?")) return;
+
+  db.services = db.services.filter(item => item.id !== id);
+  saveData();
+}
+
+function renderServices() {
+  const el = document.getElementById("servicesList");
+
+  if (!db.services.length) {
+    el.innerHTML = '<div class="empty">Nenhum serviço cadastrado.</div>';
+    return;
+  }
+
+  el.innerHTML = `
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Serviço</th><th>Preço</th><th>Ações</th></tr></thead>
+        <tbody>
+          ${db.services.map(service => `
+            <tr>
+              <td><strong>${escapeHTML(service.name)}</strong></td>
+              <td>${money(service.price)}</td>
+              <td>
+                <div class="small-actions">
+                  <button class="secondary" onclick="editService('${service.id}')">Editar</button>
+                  <button class="danger" onclick="deleteService('${service.id}')">Excluir</button>
+                </div>
+              </td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    </div>`;
+}
+
+// CLIENTES
+
+document.getElementById("clientForm").addEventListener("submit", event => {
+  event.preventDefault();
+
+  const id = document.getElementById("clientId").value;
+  const name = document.getElementById("clientName").value.trim();
+  const phone = document.getElementById("clientPhone").value.trim();
+  const notes = document.getElementById("clientNotes").value.trim();
+
+  if (!name || !phone) {
+    alert("Preencha o nome e o telefone.");
+    return;
+  }
+
+  const duplicate = db.clients.find(client =>
+    client.id !== id &&
+    phoneDigits(client.phone) === phoneDigits(phone)
+  );
+
+  if (duplicate && !confirm("Já existe uma cliente com esse telefone. Deseja cadastrar mesmo assim?")) {
+    return;
+  }
+
+  if (id) {
+    const client = db.clients.find(item => item.id === id);
+    if (client) Object.assign(client, { name, phone, notes });
+  } else {
+    db.clients.push({ id: uid(), name, phone, notes });
+  }
+
+  resetClientForm();
+  saveData();
+});
+
+function resetClientForm() {
+  document.getElementById("clientForm").reset();
+  document.getElementById("clientId").value = "";
+}
+
+function editClient(id) {
+  const client = db.clients.find(item => item.id === id);
+  if (!client) return;
+
+  document.getElementById("clientId").value = client.id;
+  document.getElementById("clientName").value = client.name;
+  document.getElementById("clientPhone").value = client.phone;
+  document.getElementById("clientNotes").value = client.notes || "";
+  document.getElementById("clientName").focus();
+}
+
+function deleteClient(id) {
+  const client = db.clients.find(item => item.id === id);
+  if (!client) return;
+
+  if (db.appointments.some(item =>
+    item.client.toLowerCase() === client.name.toLowerCase()
+  )) {
+    alert("Esta cliente possui histórico de atendimentos. Para preservar o histórico, não é possível excluí-la.");
+    return;
+  }
+
+  if (!confirm(`Excluir o cadastro de ${client.name}?`)) return;
+
+  db.clients = db.clients.filter(item => item.id !== id);
+  saveData();
+}
+
+function clientHistory(name) {
+  return db.appointments.filter(item =>
+    item.client.toLowerCase() === name.toLowerCase()
+  ).sort((a, b) =>
+    `${b.date} ${b.time}`.localeCompare(`${a.date} ${a.time}`)
+  );
+}
+
+function renderClients() {
+  const query = document.getElementById("clientSearch").value.toLowerCase().trim();
+  const list = db.clients.filter(client =>
+    client.name.toLowerCase().includes(query) ||
+    client.phone.toLowerCase().includes(query)
+  );
+
+  document.getElementById("clientSuggestions").innerHTML =
+    db.clients.map(client =>
+      `<option value="${escapeHTML(client.name)}"></option>`
+    ).join("");
+
+  const el = document.getElementById("clientsList");
+
+  if (!list.length) {
+    el.innerHTML = '<div class="empty">Nenhuma cliente encontrada.</div>';
+    return;
+  }
+
+  el.innerHTML = list.map(client => {
+    const history = clientHistory(client.name);
+    const completed = history.filter(item => item.status === "Concluído");
+    const totalPaid = completed.filter(item => item.payment === "Pago")
+      .reduce((sum, item) => sum + Number(item.price), 0);
+
+    return `
+      <div class="client-card">
+        <h3>${escapeHTML(client.name)}</h3>
+        <p>WhatsApp: ${escapeHTML(client.phone)}</p>
+        <p>Atendimentos registrados: ${history.length}</p>
+        <p>Atendimentos concluídos: ${completed.length}</p>
+        <p>Total pago registrado: <strong>${money(totalPaid)}</strong></p>
+        <p>Observações: ${escapeHTML(client.notes || "Nenhuma")}</p>
+        <div class="small-actions" style="margin-top:10px">
+          <button class="secondary" onclick="editClient('${client.id}')">Editar</button>
+          <button class="danger" onclick="deleteClient('${client.id}')">Excluir</button>
+          <button class="secondary" onclick="showClientHistory('${client.id}')">Histórico</button>
+          <button class="success" onclick="openWhatsApp('${escapeHTML(client.phone)}')">WhatsApp</button>
+        </div>
+        <div id="history-${client.id}" class="hidden"></div>
+      </div>`;
+  }).join("");
+}
+
+function showClientHistory(id) {
+  const client = db.clients.find(item => item.id === id);
+  if (!client) return;
+
+  const box = document.getElementById(`history-${id}`);
+  if (!box) return;
+
+  if (!box.classList.contains("hidden")) {
+    box.classList.add("hidden");
+    return;
+  }
+
+  const history = clientHistory(client.name);
+
+  box.innerHTML = history.length
+    ? `<div class="notice" style="margin-top:12px">
+        <strong>Histórico de ${escapeHTML(client.name)}</strong>
+        ${history.map(item => `
+          <p style="margin-top:8px">
+            ${formatDate(item.date)} às ${escapeHTML(item.time)} —
+            ${escapeHTML(item.service)} — ${money(item.price)} —
+            ${escapeHTML(item.status)}
+          </p>
+        `).join("")}
+      </div>`
+    : '<div class="notice" style="margin-top:12px">Ainda não há atendimentos registrados.</div>';
+
+  box.classList.remove("hidden");
+}
+
+// AGENDAMENTOS
+
+document.getElementById("appointmentForm").addEventListener("submit", event => {
+  event.preventDefault();
+
+  const id = document.getElementById("appointmentId").value;
+  const client = document.getElementById("appointmentClient").value.trim();
+  const phone = document.getElementById("appointmentPhone").value.trim();
+  const serviceId = document.getElementById("appointmentService").value;
+  const service = db.services.find(item => item.id === serviceId);
+  const price = Number(document.getElementById("appointmentPrice").value);
+  const date = document.getElementById("appointmentDate").value;
+  const time = document.getElementById("appointmentTime").value;
+  const status = document.getElementById("appointmentStatus").value;
+  const payment = document.getElementById("appointmentPayment").value;
+  const notes = document.getElementById("appointmentNotes").value.trim();
+
+  if (!client || !service || !date || !time ||
+      !Number.isFinite(price) || price < 0) {
+    alert("Preencha os campos obrigatórios corretamente.");
+    return;
+  }
+
+  const appointment = {
+    id: id || uid(),
+    client,
+    phone,
+    serviceId,
+    service: service.name,
+    price,
+    date,
+    time,
+    status,
+    payment,
+    notes
+  };
+
+  if (id) {
+    const index = db.appointments.findIndex(item => item.id === id);
+    if (index !== -1) db.appointments[index] = appointment;
+  } else {
+    db.appointments.push(appointment);
+  }
+
+  // Cria um cadastro de cliente se ainda não existir.
+  const existingClient = db.clients.find(item =>
+    item.name.toLowerCase() === client.toLowerCase()
+  );
+
+  if (existingClient && phone) {
+    existingClient.phone = phone;
+  } else if (!existingClient) {
+    db.clients.push({
+      id: uid(),
+      name: client,
+      phone,
+      notes: ""
+    });
+  }
+
+  resetAppointmentForm();
+  saveData();
+  alert("Agendamento salvo com sucesso! 💗");
+});
+
+function resetAppointmentForm() {
+  document.getElementById("appointmentForm").reset();
+  document.getElementById("appointmentId").value = "";
+  document.getElementById("appointmentDate").value = todayISO();
+  document.getElementById("appointmentStatus").value = "Pendente";
+  document.getElementById("appointmentPayment").value = "Pendente";
+  document.getElementById("appointmentFormTitle").textContent = "Novo agendamento";
+}
+
+function editAppointment(id) {
+  const item = db.appointments.find(appointment => appointment.id === id);
+  if (!item) return;
+
+  showPage("agenda");
+
+  document.getElementById("appointmentId").value = item.id;
+  document.getElementById("appointmentClient").value = item.client;
+  document.getElementById("appointmentPhone").value = item.phone;
+  document.getElementById("appointmentService").value = item.serviceId;
+  document.getElementById("appointmentPrice").value = item.price;
+  document.getElementById("appointmentDate").value = item.date;
+  document.getElementById("appointmentTime").value = item.time;
+  document.getElementById("appointmentStatus").value = item.status;
+  document.getElementById("appointmentPayment").value = item.payment;
+  document.getElementById("appointmentNotes").value = item.notes || "";
+  document.getElementById("appointmentFormTitle").textContent = "Editar agendamento";
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function deleteAppointment(id) {
+  if (!confirm("Deseja excluir este agendamento?")) return;
+
+  db.appointments = db.appointments.filter(item => item.id !== id);
+  saveData();
+}
+
+function setAppointmentStatus(id, status) {
+  const item = db.appointments.find(appointment => appointment.id === id);
+  if (!item) return;
+
+  item.status = status;
+  saveData();
+}
+
+function setPaymentStatus(id, payment) {
+  const item = db.appointments.find(appointment => appointment.id === id);
+  if (!item) return;
+
+  item.payment = payment;
+  saveData();
+}
+
+function appointmentRow(item) {
+  const message = `Olá, ${item.client}! 💗 Passando para confirmar seu horário na Nardi Nails no dia ${formatDate(item.date)} às ${item.time}, para ${item.service}.`;
+
+  return `
+    <tr>
+      <td>${formatDate(item.date)}<br><strong>${escapeHTML(item.time)}</strong></td>
+      <td>
+        <strong>${escapeHTML(item.client)}</strong><br>
+        <span style="color:#8b777e">${escapeHTML(item.phone || "Sem telefone")}</span>
+      </td>
+      <td>${escapeHTML(item.service)}</td>
+      <td>${money(item.price)}</td>
+      <td>
+        <select aria-label="Situação do atendimento"
+          onchange="setAppointmentStatus('${item.id}', this.value)">
+          <option value="Pendente" ${item.status === "Pendente" ? "selected" : ""}>Agendado</option>
+          <option value="Concluído" ${item.status === "Concluído" ? "selected" : ""}>Concluído</option>
+          <option value="Cancelado" ${item.status === "Cancelado" ? "selected" : ""}>Cancelado</option>
+        </select>
+      </td>
+      <td>
+        <select aria-label="Situação do pagamento"
+          onchange="setPaymentStatus('${item.id}', this.value)">
+          <option value="Pendente" ${item.payment === "Pendente" ? "selected" : ""}>Pendente</option>
+          <option value="Pago" ${item.payment === "Pago" ? "selected" : ""}>Pago</option>
+        </select>
+      </td>
+      <td>
+        <div class="small-actions">
+          ${item.phone ? `<button class="success" onclick="openWhatsApp('${escapeHTML(item.phone)}', '${escapeHTML(message)}')">WhatsApp</button>` : ""}
+          <button class="secondary" onclick="editAppointment('${item.id}')">Editar</button>
+          <button class="danger" onclick="deleteAppointment('${item.id}')">Excluir</button>
+        </div>
+      </td>
+    </tr>`;
+}
+
+function renderAppointments() {
+  const date = document.getElementById("filterDate").value;
+  const query = document.getElementById("filterSearch").value.toLowerCase().trim();
+  const status = document.getElementById("filterStatus").value;
+
+  const list = [...db.appointments]
+    .filter(item => !date || item.date === date)
+    .filter(item =>
+      item.client.toLowerCase().includes(query) ||
+      item.service.toLowerCase().includes(query) ||
+      (item.phone || "").includes(query)
+    )
+    .filter(item => !status || item.status === status)
+    .sort((a, b) =>
+      `${a.date} ${a.time}`.localeCompare(`${b.date} ${b.time}`)
+    );
+
+  document.getElementById("appointmentsList").innerHTML = list.length
+    ? `<div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Data e hora</th><th>Cliente</th><th>Serviço</th>
+            <th>Valor</th><th>Situação</th><th>Pagamento</th><th>Ações</th>
+          </tr></thead>
+          <tbody>${list.map(appointmentRow).join("")}</tbody>
+        </table>
+      </div>`
+    : '<div class="empty">Nenhum agendamento encontrado para esses filtros.</div>';
+}
+
+function clearFilters() {
+  document.getElementById("filterDate").value = "";
+  document.getElementById("filterSearch").value = "";
+  document.getElementById("filterStatus").value = "";
+  renderAppointments();
+}
+
+["filterDate", "filterSearch", "filterStatus"].forEach(id => {
+  document.getElementById(id).addEventListener("input", renderAppointments);
+});
+
+// FINANCEIRO
+
+function getFinancialData(month = "") {
+  const list = db.appointments.filter(item =>
+    (!month || item.date.startsWith(month)) &&
+    item.status !== "Cancelado"
+  );
+
+  const received = list
+    .filter(item => item.payment === "Pago")
+    .reduce((sum, item) => sum + Number(item.price), 0);
+
+  const pending = list
+    .filter(item => item.payment !== "Pago")
+    .reduce((sum, item) => sum + Number(item.price), 0);
+
+  const completed = list.filter(item => item.status === "Concluído").length;
+  const expected = list.reduce((sum, item) => sum + Number(item.price), 0);
+
+  return { list, received, pending, completed, expected };
+}
+
+function renderFinance() {
+  const month = document.getElementById("financeMonth").value;
+  const data = getFinancialData(month);
+
+  document.getElementById("financeReceived").textContent = money(data.received);
+  document.getElementById("financePending").textContent = money(data.pending);
+  document.getElementById("financeCompleted").textContent = data.completed;
+  document.getElementById("financeExpected").textContent = money(data.expected);
+
+  document.getElementById("financeSummary").innerHTML = `
+    <p style="margin-bottom:12px">
+      <strong>Período:</strong> ${escapeHTML(month || "Todos os meses")}
+    </p>
+    <p style="line-height:2">
+      Atendimentos não cancelados: <strong>${data.list.length}</strong><br>
+      Pagamentos recebidos: <strong>${money(data.received)}</strong><br>
+      Pagamentos pendentes: <strong>${money(data.pending)}</strong><br>
+      Total previsto: <strong>${money(data.expected)}</strong>
+    </p>`;
+}
+
+document.getElementById("financeMonth").addEventListener("change", renderFinance);
+
+// INÍCIO E INDICADORES
+
+function renderHome() {
+  const today = todayISO();
+  const todays = db.appointments.filter(item =>
+    item.date === today && item.status !== "Cancelado"
+  ).sort((a, b) => a.time.localeCompare(b.time));
+
+  document.getElementById("statToday").textContent = todays.length;
+
+  const allData = getFinancialData();
+  document.getElementById("statReceived").textContent = money(allData.received);
+  document.getElementById("statPending").textContent = money(allData.pending);
+  document.getElementById("statClients").textContent = db.clients.length;
+
+  document.getElementById("todayAppointments").innerHTML = todays.length
+    ? `<div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Horário</th><th>Cliente</th><th>Serviço</th>
+            <th>Valor</th><th>Situação</th><th>Ações</th>
+          </tr></thead>
+          <tbody>
+            ${todays.map(item => `
+              <tr>
+                <td><strong>${escapeHTML(item.time)}</strong></td>
+                <td>${escapeHTML(item.client)}</td>
+                <td>${escapeHTML(item.service)}</td>
+                <td>${money(item.price)}</td>
+                <td><span class="status ${escapeHTML(item.status)}">${escapeHTML(item.status)}</span></td>
+                <td><button class="secondary" onclick="editAppointment('${item.id}')">Abrir</button></td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      </div>`
+    : '<div class="empty">Você não tem atendimentos agendados para hoje. 💗</div>';
+}
+
+// BACKUP
+
+function exportBackup() {
+  const data = {
+    app: "Nardi Nails",
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    ...db
+  };
+
+  const blob = new Blob(
+    [JSON.stringify(data, null, 2)],
+    { type: "application/json" }
+  );
+
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `nardi-nails-backup-${todayISO()}.json`;
+  link.click();
+  URL.revokeObjectURL(url);
+}
+
+document.getElementById("backupFile").addEventListener("change", async event => {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  try {
+    const text = await file.text();
+    const data = JSON.parse(text);
+
+    if (!Array.isArray(data.appointments) ||
+        !Array.isArray(data.clients) ||
+        !Array.isArray(data.services)) {
+      throw new Error("Formato inválido");
+    }
+
+    if (!confirm("A importação substituirá os dados atuais. Faça um backup antes. Deseja continuar?")) {
+      event.target.value = "";
+      return;
+    }
+
+    db = {
+      appointments: data.appointments,
+      clients: data.clients,
+      services: data.services
+    };
+
+    saveData();
+    alert("Backup importado com sucesso!");
+  } catch (error) {
+    alert("Não foi possível importar esse arquivo. Selecione um backup JSON válido da Nardi Nails.");
+  }
+
+  event.target.value = "";
+});
+
+function clearAllData() {
+  const confirmation = prompt(
+    'Para confirmar a exclusão, digite APAGAR.'
+  );
+
+  if (confirmation !== "APAGAR") return;
+
+  db = {
+    appointments: [],
+    clients: [],
+    services: [...defaultServices]
+  };
+
+  resetAppointmentForm();
+  resetClientForm();
+  resetServiceForm();
+  saveData();
+  alert("Os dados locais foram apagados.");
+}
+
+// RENDERIZAÇÃO
+
+function renderAll() {
+  renderServiceOptions();
+  renderServices();
+  renderClients();
+  renderAppointments();
+  renderFinance();
+  renderHome();
+}
+
+document.getElementById("clientSearch").addEventListener("input", renderClients);
+
+// Preenche telefone automaticamente quando seleciona uma cliente cadastrada.
+document.getElementById("appointmentClient").addEventListener("change", event => {
+  const name = event.target.value.trim().toLowerCase();
+  const client = db.clients.find(item => item.name.toLowerCase() === name);
+
+  if (client) {
+    document.getElementById("appointmentPhone").value = client.phone;
+  }
+});
+
+renderAll();
+</script>
+
+</body>
+</html>
